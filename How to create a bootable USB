@@ -1,0 +1,118 @@
+Download a full macOS installer from Apple
+
+    ﻿To get a full macOS installer:
+
+        Download macOS from the App Store or your web browser using the links provided in How to download and install macOS.
+
+        Download from a Mac that is using the latest version of OS X El Capitan or later and is compatible with the macOS you're downloading. Find out which macOS your Mac is using.
+
+        Enterprise administrators: Download from Apple, not a locally hosted update server.
+
+    After you have the installer:
+
+        Make sure that the installer is in the Applications folder of your startup disk. This is the folder that opens when you choose Go > Applications from the menu bar in the Finder.
+
+        Make sure that the installer is named Install [Version Name], such as Install macOS Sonoma. It should be an app, not a disk image (.dmg) or package (.pkg) that contains the installer.
+
+Connect a USB flash drive to your Mac
+
+Connect a USB flash drive or other secondary volume to your Mac.
+
+    When you create the bootable installer, this volume will automatically be erased.
+
+    A 32GB USB flash drive has more than enough storage space for any macOS installer, and 16GB is enough for most earlier versions of macOS. If more space is needed, Terminal will let you know.
+
+Use Terminal to create the bootable installer
+Terminal window showing the completed process
+
+    Connect the USB flash drive directly to your Mac.
+
+    Open Terminal, which is in the Utilities folder of your Applications folder.
+
+    Type or paste one of the commands below into Terminal, then press Return to enter the command. Each command assumes that the installer is in your Applications folder, and MyVolume is the name of the USB flash drive. If it has a different name, rename it or replace MyVolume in the command as needed.
+
+    When prompted, type your administrator password. Terminal doesn't show any characters as you type. Then press Return.
+
+    When prompted, type Y to confirm that you want to erase the volume, then press Return. Terminal shows the progress as the volume is erased. If Terminal can't erase successfully, use Disk Utility to erase the volume using Mac OS Extended (Journaled) format, then start again from the beginning.
+
+    After the volume is erased, you might see an alert that Terminal would like to access files on a removable volume. Click OK to allow the copy to proceed.
+
+    When Terminal says that the install media is now available, the volume will have the same name as the installer, such as Install macOS Sonoma. You can now quit Terminal and eject the volume.
+
+Commands to use in Terminal
+
+Depending on which macOS you downloaded, enter one of the following commands in Terminal as instructed above. Replace MyVolume in the command with the name of your volume, if different.
+
+If the Mac you're using to create the bootable installer is using macOS Sierra or earlier, append --applicationpath to your command, followed by the appropriate installer path, similar to what is shown in the command below for El Capitan.
+Sonoma:
+
+sudo /Applications/Install\ macOS\ Sonoma.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume
+Ventura:
+
+sudo /Applications/Install\ macOS\ Ventura.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume
+Monterey:
+
+sudo /Applications/Install\ macOS\ Monterey.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume
+Big Sur:
+
+sudo /Applications/Install\ macOS\ Big\ Sur.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume
+Catalina:
+
+sudo /Applications/Install\ macOS\ Catalina.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume
+Mojave:
+
+sudo /Applications/Install\ macOS\ Mojave.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume
+High Sierra:
+
+sudo /Applications/Install\ macOS\ High\ Sierra.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume
+El Capitan:
+
+sudo /Applications/Install\ OS\ X\ El\ Capitan.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume --applicationpath /Applications/Install\ OS\ X\ El\ Capitan.app
+Use the bootable installer
+
+Follow the appropriate steps based on whether the Mac receiving the macOS installation is a Mac with Apple silicon.
+Mac with Apple silicon
+
+    Shut down or turn off the Mac.
+
+    Connect the bootable installer to the Mac.
+
+        This Mac must be compatible with the macOS that you're installing. If it isn't, it might start up to a circle with a line through it.
+
+        This Mac must be able connect to the internet. A bootable installer doesn't download macOS, but it does need an internet connection to get firmware and other information for this Mac model.
+
+    Turn on the Mac and continue to hold the power button until you see the startup options window, which shows your bootable volumes, including the bootable installer.
+
+    Select the bootable installer, then click Continue.
+
+    When the macOS installer opens, follow the onscreen installation instructions.
+
+Any other Mac
+
+    Shut down or turn off the Mac.
+
+    Connect the bootable installer to the Mac.
+
+        This Mac must be compatible with the macOS that you're installing. If it isn't, it might start up to a circle with a line through it.
+
+        This Mac must be able to connect to the internet. A bootable installer doesn't download macOS, but it does need an internet connection to get firmware and other information for this Mac model.
+
+    Turn on the Mac, then immediately press and hold the Option (Alt) key.
+
+    Release the Option key when you see a dark screen showing your bootable volumes, including the bootable installer.
+
+    Select the bootable installer. Then click the onscreen arrow or press Return.
+
+    If you're using a Mac with the Apple T2 Security Chip and you can't start up from the bootable installer, make sure that Startup Security Utility is set to allow booting from external or removable media.
+
+    Choose your language, if prompted.
+
+    Select Install macOS (or Install OS X) from the Utilities window, then click Continue and follow the onscreen instructions.
+
+Learn more
+
+For more information about the createinstallmedia command and the arguments you can use with it, make sure that the macOS installer is in your Applications folder, then enter the following in Terminal, replacing InstallerName with the name of the installer:
+
+"/Applications/InstallerName.app/Contents/Resources/createinstallmedia"
+
+Example: "/Applications/Install macOS Sonoma.app/Contents/Resources/createinstallmedia"
